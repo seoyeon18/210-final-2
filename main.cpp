@@ -41,4 +41,29 @@ int main()
             tail = newNode;
         }
     }
+
+    CoffeeNode* current = head;
+
+    while (current != nullptr)
+    {
+        cout << current->name << "ordered" << current->drink << endl;
+        current = current->next;
+    }
+
+    if (head != nullptr)
+    {
+        CoffeeNode* served = head;
+        cout << endl;
+        cout << "Served: " << served->name << served->drink << endl;
+
+        head = head->next;
+
+        if (head == nullptr)
+        {
+            tail = nullptr;
+        }
+
+        delete served;
+    }
+
 }
