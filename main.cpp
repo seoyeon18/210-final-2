@@ -46,7 +46,7 @@ int main()
 
     while (current != nullptr)
     {
-        cout << current->name << "ordered" << current->drink << endl;
+        cout << current->name << current->drink << endl;
         current = current->next;
     }
 
@@ -66,4 +66,24 @@ int main()
         delete served;
     }
 
+    cout << endl;
+    cout << "Coffee booth queue after serving one customer:" << endl;
+
+    current = head;
+
+    while (current != nullptr)
+    {
+        cout << current->name << current->drink << endl;
+        current = current->next;
+    }
+
+    while (head != nullptr)
+    {
+        CoffeeNode* temp = head;
+        head = head->next;
+        delete temp;
+    }
+
+    return 0;
 }
+
