@@ -1,4 +1,4 @@
-// Milestone4
+// Milestone6
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -97,7 +97,7 @@ int main()
         {
             CoffeeNode *served = coffeeHead;
 
-            cout << "Coffee booth served: " << served->name << served->drink << endl;
+            cout << "Coffee booth served: " << served->name  << " with " << served->drink << endl;
 
             coffeeHead = coffeeHead->next;
 
@@ -110,7 +110,7 @@ int main()
         }
         else
         {
-            cout << "coffee booth: no server" << endl;
+            cout << "coffee boothserved: no customer" << endl;
         }
 
         if (rand() % 2 == 0)
@@ -120,7 +120,7 @@ int main()
             newNode->drink = drinks[rand() % 6];
             newNode->next = nullptr;
 
-            cout << "Coffee booth joined: " << newNode->name << newNode->drink << endl;
+            cout << "Coffee booth joined: " << newNode->name << " ordered " << newNode->drink << endl;
 
             if (coffeeHead == nullptr)
             {
@@ -135,13 +135,13 @@ int main()
         }
         else
         {
-            cout << "no new customer" << endl;
+            cout << "Coffee booth joined no new customer" << endl;
         }
 
         if (!muffinQueue.empty())
         {
             cout << "Muffin booth served: " << muffinQueue.front().name
-                 << muffinQueue.front().muffin << endl;
+                 << " with " << muffinQueue.front().muffin << endl;
 
             muffinQueue.pop_front();
         }
@@ -160,7 +160,7 @@ int main()
             muffinQueue.push_back(muffinCustomer);
 
             cout << "Muffin booth joined: " << muffinCustomer.name
-                 << " ordered " << muffinCustomer.muffin << endl;
+                 << " with " << " ordered " << muffinCustomer.muffin << endl;
         }
         else
         {
