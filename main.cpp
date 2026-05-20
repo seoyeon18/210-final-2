@@ -1,8 +1,9 @@
-//Milestone2
+//Milestone3
 #include <iostream>
 #include <string>
 #include <cstdlib>
 #include <ctime>
+#include <deque>
 
 using namespace std;
 
@@ -13,16 +14,24 @@ struct CoffeeNode
     CoffeeNode* next;
 };
 
+struct MuffinCustomer
+{
+    string name;
+    string muffin;
+};
+
 int main()
 {
     srand(time(0));
 
     string names[] = {"Seoyeon", "James", "Seongjun", "Alyssa", "Dayeon"};
     string drinks[] = {"Latte", "Mocha", "Americano", "Cappuccino", "Cold Brew", "Espresso"};
+    string muffins[] = {"Blueberry", "Chocolate", "Banana", "chhese"};
 
-    CoffeeNode* head = nullptr;
-    CoffeeNode* tail = nullptr;
+    CoffeeNode* coffeeHead = nullptr;
+    CoffeeNode* coffeeTail  = nullptr;
   
+    deque<MuffinCustomer> muffinQueue;
 
     for (int i = 0; i < 3; i++)
     {
@@ -32,15 +41,15 @@ int main()
         newNode->drink = drinks[rand() % 6];
         newNode->next = nullptr;
 
-        if (head == nullptr)
+        if (coffeeHead  == nullptr)
         {
-            head = newNode;
-            tail = newNode;
+            coffeeHead  = newNode;
+            coffeeTail  = newNode;
         }
         else
         {
-            tail->next = newNode;
-            tail = newNode;
+            coffeeHead->next = newNode;
+            coffeeTail = newNode;
         }
     }
 
@@ -48,17 +57,17 @@ int main()
     {
         cout << "Round " << round << endl;
 
-        if (head != nullptr)
+        if (coffeeHead != nullptr)
         {
-            CoffeeNode* served = head;
+            CoffeeNode* served = coffeeHead;
 
             cout << "Coffee booth served: " << served->name  << served->drink << endl;
 
-            head = head->next;
+            coffeeHead = coffeeHead->next;
 
-            if (head == nullptr)
+            if (coffeeHead == nullptr)
             {
-                tail = nullptr;
+                coffeeHead = nullptr;
             }
 
             delete served;
@@ -78,15 +87,15 @@ int main()
             cout << "Coffee booth joined: " << newNode->name << newNode->drink << endl;
 
 
-            if (head == nullptr)
+            if (coffeeHead == nullptr)
             {
-                head = newNode;
-                tail = newNode;
+                coffeeHead = newNode;
+                coffeeHead = newNode;
             }
             else
             {
-                tail->next = newNode;
-                tail = newNode;
+                coffeeHead->next = newNode;
+                coffeeHead = newNode;
             }
         }
         else
@@ -97,7 +106,7 @@ int main()
 
 
 
-    CoffeeNode* current = head;
+    CoffeeNode* current = coffeeHead;
 
     while (current != nullptr)
     {
@@ -105,17 +114,17 @@ int main()
         current = current->next;
     }
 
-    if (head != nullptr)
+    if (coffeeHead != nullptr)
     {
-        CoffeeNode* served = head;
+        CoffeeNode* served = coffeeHead;
         cout << endl;
         cout << "Served: " << served->name << served->drink << endl;
 
-        head = head->next;
+        coffeeHead = coffeeHead->next;
 
-        if (head == nullptr)
+        if (coffeeHead == nullptr)
         {
-            tail = nullptr;
+            coffeeHead = nullptr;
         }
 
         delete served;
@@ -124,7 +133,7 @@ int main()
     cout << endl;
     cout << "Coffee booth queue after serving one customer:" << endl;
 
-    current = head;
+    current = coffeeHead;
 
     while (current != nullptr)
     {
@@ -135,10 +144,10 @@ int main()
     cout << endl;
 }
 
-    while (head != nullptr)
+    while (coffeeHead != nullptr)
     {
-        CoffeeNode* temp = head;
-        head = head->next;
+        CoffeeNode* temp = coffeeHead;
+        coffeeHead = coffeeHead->next;
         delete temp;
     }
 
