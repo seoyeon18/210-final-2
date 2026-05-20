@@ -207,7 +207,17 @@ int main()
             cout << "Sticker booth no customer" << endl;
         }
 
-        cout << endl;
+        if (rand() % 2 == 0)
+        {
+            StickerCustomer stickerCustomer;
+
+            stickerCustomer.name = names[rand() % 5];
+            stickerCustomer.sticker = stickers[rand() % 4];
+
+            stickerQueue.push(stickerCustomer);
+
+            cout << "Sticker booth joined: " << stickerCustomer.name<<stickerCustomer.sticker << endl;
+        }
     }
 
     while (coffeeHead != nullptr)
