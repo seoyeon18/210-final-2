@@ -1,6 +1,8 @@
-//Milestone1
+//Milestone2
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -41,6 +43,53 @@ int main()
             tail = newNode;
         }
     }
+
+    for (int round = 1; round <= 10; round++)
+    {
+        cout << "Round " << round << endl;
+
+        if (head != nullptr)
+        {
+            CoffeeNode* served = head;
+
+            cout << "Coffee booth served: " << served->name  << served->drink << endl;
+
+            head = head->next;
+
+            if (head == nullptr)
+            {
+                tail = nullptr;
+            }
+
+            delete served;
+        }
+        else
+        {
+            cout << "coffee booth: no server";
+        } 
+
+        if (rand() % 2 == 0)
+        {
+            CoffeeNode* newNode = new CoffeeNode;
+
+            
+
+            if (head == nullptr)
+            {
+                
+            }
+            else
+            {
+                
+            }
+        }
+        else
+        {
+            cout << "no new customer" << endl;
+        }
+
+
+
 
     CoffeeNode* current = head;
 
