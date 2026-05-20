@@ -71,16 +71,22 @@ int main()
         if (rand() % 2 == 0)
         {
             CoffeeNode* newNode = new CoffeeNode;
+            newNode->name = names[rand() % 6];
+            newNode->drink = drinks[rand() % 6];
+            newNode->next = nullptr;
 
-            
+            cout << "Coffee booth joined: " << newNode->name << newNode->drink << endl;
+
 
             if (head == nullptr)
             {
-                
+                head = newNode;
+                tail = newNode;
             }
             else
             {
-                
+                tail->next = newNode;
+                tail = newNode;
             }
         }
         else
@@ -125,6 +131,9 @@ int main()
         cout << current->name << current->drink << endl;
         current = current->next;
     }
+
+    cout << endl;
+}
 
     while (head != nullptr)
     {
