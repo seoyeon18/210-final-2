@@ -110,6 +110,30 @@ int main()
         {
             cout << "no new customer" << endl;
         }
+
+        if (!muffinQueue.empty())
+        {
+            cout << "Muffin booth served: " << muffinQueue.front().name
+                 << muffinQueue.front().muffin << endl;
+        }
+        else
+        {
+            cout << "Muffin booth served: no customer" << endl;
+        }
+
+        if (rand() % 2 == 0){
+            MuffinCustomer muffinCustomer;
+
+            muffinCustomer.name = names[rand() % 5];
+            muffinCustomer.muffin = muffins[rand() % 4];
+
+            muffinQueue.push_back(muffinCustomer);
+        }
+        else{
+            cout << "Muffin booth joined: no new customer" << endl;
+        }
+
+        cout << endl;
         
 /////////////////////////////
 
