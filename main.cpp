@@ -1,9 +1,10 @@
-//Milestone3
+//Milestone4
 #include <iostream>
 #include <string>
 #include <cstdlib>
 #include <ctime>
 #include <deque>
+#include <vector>
 
 using namespace std;
 
@@ -20,6 +21,12 @@ struct MuffinCustomer
     string muffin;
 };
 
+struct BraceletCustomer
+{
+    string name;
+    string bracelet;
+};
+
 int main()
 {
     srand(time(0));
@@ -27,11 +34,15 @@ int main()
     string names[] = {"Seoyeon", "James", "Seongjun", "Alyssa", "Dayeon"};
     string drinks[] = {"Latte", "Mocha", "Americano", "Cappuccino", "Cold Brew", "Espresso"};
     string muffins[] = {"Blueberry", "Chocolate", "Banana", "chhese"};
+    string bracelets[] = {"Rainbow", "Heart", "Star", "Flower"};
 
     CoffeeNode* coffeeHead = nullptr;
     CoffeeNode* coffeeTail  = nullptr;
   
     deque<MuffinCustomer> muffinQueue;
+
+
+    vector<BraceletCustomer> braceletQueue;
 
     for (int i = 0; i < 3; i++)
     {
@@ -57,6 +68,13 @@ int main()
         muffinCustomer.muffin = muffins[rand() % 4];
 
         muffinQueue.push_back(muffinCustomer);
+
+        BraceletCustomer braceletCustomer;
+
+        braceletCustomer.name = names[rand() % 5];
+        braceletCustomer.bracelet = bracelets[rand() % 4];
+
+        braceletQueue.push_back(braceletCustomer);
     }
 
 
@@ -115,6 +133,8 @@ int main()
         {
             cout << "Muffin booth served: " << muffinQueue.front().name
                  << muffinQueue.front().muffin << endl;
+
+            muffinQueue.pop_front();
         }
         else
         {
@@ -128,6 +148,9 @@ int main()
             muffinCustomer.muffin = muffins[rand() % 4];
 
             muffinQueue.push_back(muffinCustomer);
+
+            cout << "Muffin booth joined: " << muffinCustomer.name
+         << " ordered " << muffinCustomer.muffin << endl;
         }
         else{
             cout << "Muffin booth joined: no new customer" << endl;
@@ -135,47 +158,7 @@ int main()
 
         cout << endl;
         
-/////////////////////////////
-
-
-
-//     CoffeeNode* current = coffeeHead;
-
-//     while (current != nullptr)
-//     {
-//         cout << current->name << current->drink << endl;
-//         current = current->next;
-//     }
-
-//     if (coffeeHead != nullptr)
-//     {
-//         CoffeeNode* served = coffeeHead;
-//         cout << endl;
-//         cout << "Served: " << served->name << served->drink << endl;
-
-//         coffeeHead = coffeeHead->next;
-
-//         if (coffeeHead == nullptr)
-//         {
-//             coffeeHead = nullptr;
-//         }
-
-//         delete served;
-//     }
-
-//     cout << endl;
-//     cout << "Coffee booth queue after serving one customer:" << endl;
-
-//     current = coffeeHead;
-
-//     while (current != nullptr)
-//     {
-//         cout << current->name << current->drink << endl;
-//         current = current->next;
-//     }
-
-//     cout << endl;
-// }
+    }
 
     while (coffeeHead != nullptr)
     {
