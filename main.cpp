@@ -37,7 +37,7 @@ int main()
     {
         CoffeeNode* newNode = new CoffeeNode;
 
-        newNode->name = names[rand() % 6];
+        newNode->name = names[rand() % 5];
         newNode->drink = drinks[rand() % 6];
         newNode->next = nullptr;
 
@@ -48,10 +48,18 @@ int main()
         }
         else
         {
-            coffeeHead->next = newNode;
+            coffeeTail->next = newNode;
             coffeeTail = newNode;
         }
+        MuffinCustomer muffinCustomer;
+
+        muffinCustomer.name = names[rand() % 5];
+        muffinCustomer.muffin = muffins[rand() % 4];
+
+        muffinQueue.push_back(muffinCustomer);
     }
+
+
 
     for (int round = 1; round <= 10; round++)
     {
@@ -67,20 +75,20 @@ int main()
 
             if (coffeeHead == nullptr)
             {
-                coffeeHead = nullptr;
+                coffeeTail = nullptr;
             }
 
             delete served;
         }
         else
         {
-            cout << "coffee booth: no server";
+            cout << "coffee booth: no server"<< endl;
         } 
 
         if (rand() % 2 == 0)
         {
             CoffeeNode* newNode = new CoffeeNode;
-            newNode->name = names[rand() % 6];
+            newNode->name = names[rand() % 5];
             newNode->drink = drinks[rand() % 6];
             newNode->next = nullptr;
 
@@ -90,59 +98,60 @@ int main()
             if (coffeeHead == nullptr)
             {
                 coffeeHead = newNode;
-                coffeeHead = newNode;
+                coffeeTail = newNode;
             }
             else
             {
-                coffeeHead->next = newNode;
-                coffeeHead = newNode;
+                coffeeTail->next = newNode;
+                coffeeTail = newNode;
             }
         }
         else
         {
             cout << "no new customer" << endl;
         }
+        
+/////////////////////////////
 
 
 
+//     CoffeeNode* current = coffeeHead;
 
-    CoffeeNode* current = coffeeHead;
+//     while (current != nullptr)
+//     {
+//         cout << current->name << current->drink << endl;
+//         current = current->next;
+//     }
 
-    while (current != nullptr)
-    {
-        cout << current->name << current->drink << endl;
-        current = current->next;
-    }
+//     if (coffeeHead != nullptr)
+//     {
+//         CoffeeNode* served = coffeeHead;
+//         cout << endl;
+//         cout << "Served: " << served->name << served->drink << endl;
 
-    if (coffeeHead != nullptr)
-    {
-        CoffeeNode* served = coffeeHead;
-        cout << endl;
-        cout << "Served: " << served->name << served->drink << endl;
+//         coffeeHead = coffeeHead->next;
 
-        coffeeHead = coffeeHead->next;
+//         if (coffeeHead == nullptr)
+//         {
+//             coffeeHead = nullptr;
+//         }
 
-        if (coffeeHead == nullptr)
-        {
-            coffeeHead = nullptr;
-        }
+//         delete served;
+//     }
 
-        delete served;
-    }
+//     cout << endl;
+//     cout << "Coffee booth queue after serving one customer:" << endl;
 
-    cout << endl;
-    cout << "Coffee booth queue after serving one customer:" << endl;
+//     current = coffeeHead;
 
-    current = coffeeHead;
+//     while (current != nullptr)
+//     {
+//         cout << current->name << current->drink << endl;
+//         current = current->next;
+//     }
 
-    while (current != nullptr)
-    {
-        cout << current->name << current->drink << endl;
-        current = current->next;
-    }
-
-    cout << endl;
-}
+//     cout << endl;
+// }
 
     while (coffeeHead != nullptr)
     {
